@@ -40,10 +40,9 @@
             if (!minAnimationRunning && seconds >= 55) {
               minAnimationRunning = true; // set flag to lock 1 sec tick updates while animation runs
               document.getElementById('clock-minutes').innerHTML = `${minString.slice(0,1)}<span class="last-char animate">${minString.slice(1)}</span>`;
-            } else if (seconds < 5) { // 5 sec window to reset flag -- accounts for some lag with setInterval
-              minAnimationRunning = false;
-              document.getElementById('clock-minutes').innerHTML = `${minString}`;
-            } else if (seconds >= 5 && seconds < 55) {
+            } else if (seconds < 55) {
+              if (seconds < 5) // 5 sec window to reset flag -- accounts for some lag with setInterval
+                minAnimationRunning = false;
               document.getElementById('clock-minutes').innerHTML = `${minString}`;
             }
 
